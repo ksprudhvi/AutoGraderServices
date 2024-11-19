@@ -24,7 +24,7 @@ chrome_options.add_argument(f"user-agent={user_agent}")
 
 # Set the path to Chrome binary and ChromeDriver
 chrome_options.binary_location = "/usr/local/bin/chromedriver"
-service = Service("/usr/bin/chromedriver")
+service = Service("/usr/local/bin/chromedriver")
 
 print("Initializing ChromeDriver service...")
 driver = webdriver.Chrome(service=service, options=chrome_options)
