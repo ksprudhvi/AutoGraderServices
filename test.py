@@ -15,7 +15,7 @@ chrome_options.add_argument("--disable-gpu")
 chrome_options.add_argument("window-size=1920x1080")
 
 # Use an existing Chrome profile
-chrome_options.add_argument("user-data-dir=/Users/prudhvikandregula/Library/Application Support/Google/Chrome")
+chrome_options.add_argument("/usr/bin/google-chrome")
 chrome_options.add_argument("profile-directory=Profile 5")
 
 # Set custom user-agent
