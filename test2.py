@@ -12,7 +12,6 @@ chrome_options.add_argument("--remote-debugging-port=9222")  # Enable debugging
 
 # Explicitly set the Chrome binary path
 chrome_options.binary_location = "/usr/bin/google-chrome"
-chrome_options.binary_location = "/usr/local/bin/chromedriver"
 service = Service("/usr/local/bin/chromedriver")
 # Initialize ChromeDriver
 driver = webdriver.Chrome(service=service, options=chrome_options)

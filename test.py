@@ -16,13 +16,13 @@ chrome_options.add_argument("--remote-debugging-port=9222")  # Enable debugging
 
 
 # Use an existing Chrome profile
-chrome_options.add_argument("/usr/bin/google-chrome")
+
 chrome_options.add_argument("profile-directory=Default")
 
 
 
 # Set the path to Chrome binary and ChromeDriver
-chrome_options.binary_location = "/usr/local/bin/chromedriver"
+chrome_options.binary_location = "/usr/bin/google-chrome"
 service = Service("/usr/local/bin/chromedriver")
 
 print("Initializing ChromeDriver service...")
