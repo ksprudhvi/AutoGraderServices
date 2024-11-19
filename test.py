@@ -153,12 +153,13 @@ try:
     # browserPopUp = WebDriverWait(driver, 5).until(
     #     EC.element_to_be_clickable((By.ID, "d2l_1_87_314"))
     # )
-    got_it_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Got It')]"))
-    )
-    got_it_button.click()
+    # got_it_button = WebDriverWait(driver, 10).until(
+    #     EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Got It')]"))
+    # )
+    # got_it_button.click()
     print("Login step 2")
     #browserPopUp.click()
+    print(driver.page_source)
     # Continue with your tasks
     assignments_button = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.LINK_TEXT, "Assignments"))
