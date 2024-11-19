@@ -16,7 +16,7 @@ chrome_options.add_argument("window-size=1920x1080")
 
 # Use an existing Chrome profile
 chrome_options.add_argument("/usr/bin/google-chrome")
-chrome_options.add_argument("profile-directory=Profile 5")
+chrome_options.add_argument("profile-directory=Default")
 
 # Set custom user-agent
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
