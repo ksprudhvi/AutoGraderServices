@@ -131,6 +131,7 @@ try:
     assignments_button = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.LINK_TEXT, "Assignments"))
     )
+    print("Login step 12")
     # Wait for the login button and click it
     WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, "ualoginbutton"))
