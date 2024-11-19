@@ -23,7 +23,7 @@ user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 chrome_options.add_argument(f"user-agent={user_agent}")
 
 # Set the path to Chrome binary and ChromeDriver
-chrome_options.binary_location = "/usr/bin/google-chrome"
+chrome_options.binary_location = "/usr/local/bin/chromedriver"
 service = Service("/usr/bin/chromedriver")
 
 print("Initializing ChromeDriver service...")
