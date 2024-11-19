@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.common import TimeoutException
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -127,29 +128,24 @@ try:
     # Open the target URL
     driver.get("https://d2l.arizona.edu/d2l/home/1487536")
     print("Page title is:", driver.title)
-    print(driver.page_source)
-    assignments_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.LINK_TEXT, "Assignments"))
-    )
-    print("Login step 12")
-    # Wait for the login button and click it
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "ualoginbutton"))
-    ).click()
-
-    # Input username
-    username_field = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "username"))
-    )
-    username_field.send_keys("ksprudhvi")  # Replace with actual username
-
-    # Input password
-    password_field = driver.find_element(By.ID, "password")
-    password_field.send_keys("Rp@251994Pru02")  # Replace with actual password
-    login_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.NAME, "_eventId_proceed"))
-    )
-    login_button.click()
+    try:
+    # Wait for the element to be clickable and click it
+        WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "ualoginbutton"))
+        ).click()
+        username_field = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "username"))
+        )
+        username_field.send_keys("ksprudhvi")
+        password_field = driver.find_element(By.ID, "password")
+        password_field.send_keys("Rp@251994Pru02")  # Replace with actual password
+        login_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.NAME, "_eventId_proceed"))
+        )
+        login_button.click()# Replace with actual username
+    except TimeoutException:
+        # Gracefully skip if the element is not found or not clickable
+        print("ualoginbutton is not clickable or not found, skipping...")
     print("Login step 1")
     #d2l_1_87_314
     # Optional: Wait until the page fully loads after login
@@ -163,7 +159,6 @@ try:
     # got_it_button.click()
     print("Login step 2")
     #browserPopUp.click()
-    print(driver.page_source)
     # Continue with your tasks
     assignments_button = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.LINK_TEXT, "Assignments"))
