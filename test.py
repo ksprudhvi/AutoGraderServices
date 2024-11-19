@@ -19,9 +19,7 @@ chrome_options.add_argument("--remote-debugging-port=9222")  # Enable debugging
 chrome_options.add_argument("/usr/bin/google-chrome")
 chrome_options.add_argument("profile-directory=Default")
 
-# Set custom user-agent
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
-chrome_options.add_argument(f"user-agent={user_agent}")
+
 
 # Set the path to Chrome binary and ChromeDriver
 chrome_options.binary_location = "/usr/local/bin/chromedriver"
