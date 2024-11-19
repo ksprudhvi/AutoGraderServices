@@ -19,8 +19,6 @@ chrome_options.add_argument("--remote-debugging-port=9222")  # Enable debugging
 
 chrome_options.add_argument("profile-directory=Default")
 
-
-
 # Set the path to Chrome binary and ChromeDriver
 chrome_options.binary_location = "/usr/bin/google-chrome"
 service = Service("/usr/local/bin/chromedriver")
@@ -149,6 +147,7 @@ try:
         EC.element_to_be_clickable((By.NAME, "_eventId_proceed"))
     )
     login_button.click()
+    print("Login step 1")
     #d2l_1_87_314
     # Optional: Wait until the page fully loads after login
     # time.sleep(5)  # Adjust as necessary or use additional waits for specific elements
@@ -159,12 +158,14 @@ try:
         EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Got It')]"))
     )
     got_it_button.click()
+    print("Login step 2")
     #browserPopUp.click()
     # Continue with your tasks
     assignments_button = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.LINK_TEXT, "Assignments"))
     )
     assignments_button.click()
+    print("Login step 3")
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
         "source": """
         (() => {
@@ -177,16 +178,24 @@ try:
         })();
     """
     })
-    driver.execute_script("""
-    document.body.style.backgroundColor = "yellow";
-    """)
+
     #driver.execute_script(js_script)
     print("Logged in successfully.")
 
-    assignments_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.LINK_TEXT, "Assignments"))
-    )
+
     time.sleep(5)
+    print("Login step 4")
+    element = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located(
+            (By.XPATH, "//a[@title='View Midterm 2 dropbox for online students submissions']")
+        )
+    )
+
+    # Click the element
+    element.click()
+    driver.execute_script("UI.GC('z_g').g_sa(true);")
+
+    driver.execute_script('D2L.O("__gctl_23",0)();')
     driver.execute_script("UI.GC('z_g').g_sa(true);")
 
     driver.execute_script('D2L.O("__gctl_23",0)();')
