@@ -128,6 +128,9 @@ try:
     driver.get("https://d2l.arizona.edu/d2l/home/1487536")
     print("Page title is:", driver.title)
     print(driver.page_source)
+    assignments_button = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.LINK_TEXT, "Assignments"))
+    )
     # Wait for the login button and click it
     WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, "ualoginbutton"))
